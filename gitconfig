@@ -1,0 +1,29 @@
+[user]
+	name = Haim Ashkenazi
+	email = haim@babysnakes.org
+[color]
+        ui = auto
+[gui]
+        recentrepo = /Users/haim/Documents/Projects/hours
+[help]
+        browser = open
+[web]
+        browser = open
+[alias]
+        ; headless = !sh -c 'git symbolic-ref HEAD refs/heads/$0 && rm .git/index && git clean -fdx && touch .gitignore && git add .gitignore'
+        headless = !sh -c 'git symbolic-ref HEAD refs/heads/$0 && rm .git/index'
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        glog = log --decorate --oneline --graph
+        l = "!source ~/.githelpers && pretty_git_log"
+        hp = "!source ~/.githelpers && show_git_head"
+        push-flow = push origin master develop --tags
+[core]
+        excludesfile = /Users/haim/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = upstream
