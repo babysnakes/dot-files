@@ -4,21 +4,20 @@
 [color]
         ui = auto
 [gui]
-        recentrepo = /Users/haim/Documents/Projects/hours
 [help]
         browser = open
 [web]
         browser = open
 [alias]
-        ; headless = !sh -c 'git symbolic-ref HEAD refs/heads/$0 && rm .git/index && git clean -fdx && touch .gitignore && git add .gitignore'
-        headless = !sh -c 'git symbolic-ref HEAD refs/heads/$0 && rm .git/index'
         hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
         glog = log --decorate --oneline --graph
         l = "!source ~/.githelpers && pretty_git_log"
         hp = "!source ~/.githelpers && show_git_head"
-        push-flow = push origin master develop --tags
+        show-assumed-unchanged = "!git ls-files -v | grep '^[a-z]'"
+        lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+        lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
 [core]
-        excludesfile = /Users/haim/.gitignore_global
+	excludesfile = /Users/haim/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -27,3 +26,13 @@
 	trustExitCode = true
 [push]
 	default = upstream
+	followTags = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[http "https://gopkg.in"]
+	followRedirects = true
