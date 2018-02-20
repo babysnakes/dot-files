@@ -1,6 +1,6 @@
 [user]
-	name = Haim Ashkenazi
-	email = haim@babysnakes.org
+        name = Haim Ashkenazi
+        email = haim@babysnakes.org
 [color]
         ui = auto
 [gui]
@@ -19,22 +19,25 @@
         lg3 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
         lg4 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 [core]
-	excludesfile = /Users/haim/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+        excludesfile = /Users/haim/.gitignore_global
+	editor = code -n --wait
+[merge]
+        tool = vscode
+[mergetool "vscode"]
+        cmd = code -n --wait $MERGED
+[diff]
+        tool = default-difftool
+[difftool "default-difftool"]
+        cmd = code -n --wait --diff $LOCAL $REMOTE
 [push]
-	default = upstream
-	followTags = true
+        default = upstream
+        followTags = true
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+        clean = git-media-clean %f
+        smudge = git-media-smudge %f
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+        clean = git-lfs clean %f
+        smudge = git-lfs smudge %f
+        required = true
 [http "https://gopkg.in"]
-	followRedirects = true
+        followRedirects = true
