@@ -1,0 +1,6 @@
+if has("gui_running")
+  if has("gui_mac") || has("gui_macvim")
+    set guifont=SauceCodePro\ Nerd\ Font\ Mono:h16
+    set transparency=1
+  endif
+endif
