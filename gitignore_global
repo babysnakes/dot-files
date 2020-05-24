@@ -9,3 +9,5 @@
 .tern-project
 .tern-port
 .vscode/
+.autoenv.zsh
+__pycache__/
